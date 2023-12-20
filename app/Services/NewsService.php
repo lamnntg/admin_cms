@@ -116,12 +116,7 @@ class NewsService implements NewsServiceInterface
                 $dataSave = uploadImage($image, '/img/news', $dataSave);
             }
 
-            foreach ($dataSave['images'] as $key => $image) {
-                if (in_array($image, $data['remove_images'] ?? [])) {
-                    unset($dataSave['images'][$key]);
-                }
-            }
-            $dataSave['images'] = array_values($dataSave['images']);
+            $dataSave['images'] = array_values(array_diff($dataSave['images'], $data['remove_images'] ?? []));
         }
 
         try {

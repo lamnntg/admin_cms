@@ -297,12 +297,7 @@ class ArticleService implements ArticleServiceInterface
                 $dataSave = uploadImage($image, '/img/house_articles', $dataSave);
             }
 
-            foreach ($dataSave['images'] as $key => $image) {
-                if (in_array($image, $data['remove_images'] ?? [])) {
-                    unset($dataSave['images'][$key]);
-                }
-            }
-            $dataSave['images'] = array_values($dataSave['images']);
+            $dataSave['images'] = array_values(array_diff($dataSave['images'], $data['remove_images'] ?? []));
         }
 
         try {
@@ -340,12 +335,7 @@ class ArticleService implements ArticleServiceInterface
                 $dataSave = uploadImage($image, '/img/service_articles', $dataSave);
             }
 
-            foreach ($dataSave['images'] as $key => $image) {
-                if (in_array($image, $data['remove_images'] ?? [])) {
-                    unset($dataSave['images'][$key]);
-                }
-            }
-            $dataSave['images'] = array_values($dataSave['images']);
+            $dataSave['images'] = array_values(array_diff($dataSave['images'], $data['remove_images'] ?? []));
         }
 
         try {
@@ -383,12 +373,7 @@ class ArticleService implements ArticleServiceInterface
                 $dataSave = uploadImage($image, '/img/market_articles', $dataSave);
             }
 
-            foreach ($dataSave['images'] as $key => $image) {
-                if (in_array($image, $data['remove_images'] ?? [])) {
-                    unset($dataSave['images'][$key]);
-                }
-            }
-            $dataSave['images'] = array_values($dataSave['images']);
+            $dataSave['images'] = array_values(array_diff($dataSave['images'], $data['remove_images'] ?? []));
         }
 
         try {
